@@ -102,7 +102,7 @@ public class CartController : ControllerBase
       return BadRequest(new { Message = $"{item.Quantity} is an invalid value" });
     }
 
-    if (await this._productsService.GetById(item.BarCode) == null)
+    if (await this._productsService.GetById(item.BarCode) != null)
     {
       return NotFound(new { Message = $"No product exists for {item.BarCode}" });
     }
