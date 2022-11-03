@@ -97,7 +97,7 @@ namespace Shopping.Cart.Data.Context.Repositories
           await connection.OpenAsync();
 
           return await connection.ExecuteScalarAsync<Product>(
-            "select BarCode, Name, Description, Category, UnitPrice from Products where Id = $Id",
+            "select BarCode, Name, Description, Category, UnitPrice from Products where BarCode = '@Id'",
             new { Id = id });
         }
         finally
