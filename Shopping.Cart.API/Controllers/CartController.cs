@@ -54,7 +54,7 @@ public class CartController : ControllerBase
       return NotFound(new { Message = $"Cart not found for [id: {cartId}]" });
     }
 
-    if (item.BarCode == null)
+    if (barCode == null)
     {
       return NotFound(new { Message = $"Item [id: {barCode}] not found in cart" });
     }
@@ -79,7 +79,7 @@ public class CartController : ControllerBase
       return NotFound(new { Message = $"Cart not found for [id: {cartId}]" });
     }
 
-    if (cart.Exists(barCode))
+    if (!cart.Exists(barCode))
     {
       return NotFound(new { Message = $"Item [id: {barCode}] not found in cart" });
     }
